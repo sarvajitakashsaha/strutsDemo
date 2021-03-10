@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" 
+"http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+	<form-beans>
+		<form-bean name="helloForm"
+			type="info.java.tips.form.HelloForm" />
+		<form-bean name="registrationForm"
+			type="info.java.tips.form.RegistrationForm" />
+		<form-bean name="userForm"
+			type="info.java.tips.form.UserForm" />
+	</form-beans>
+
+	<action-mappings>
+		<action path="/hello" type="info.java.tips.action.HelloAction"
+			name="helloForm" input="/hello.jsp">
+			<forward name="error" path="/error.jsp" />
+			<forward name="success" path="/welcome.jsp" />
+		</action>
+		<action path="/user" type="info.java.tips.action.UserAction"
+			name="userForm" >
+			<forward name="error" path="/error.jsp" />
+			<forward name="success" path="/user.jsp" />
+		</action>
+		<action name="registrationForm" path="/register"
+			type="info.java.tips.action.RegistrationAction" scope="request"
+			input="/Register.jsp">
+			<forward name="failure" path="/Failure.jsp" redirect="true" />
+			<forward name="success" path="/Success.jsp" redirect="true" />
+		</action>
+		<action name="registrationForm" path="/login"
+			type="info.java.tips.action.LoginAction" scope="request"
+			input="/login.jsp">
+			<forward name="failure" path="/Failure.jsp" redirect="true" />
+			<forward name="success" path="/user.do" redirect="true" />
+		</action>
+
+	</action-mappings>
+
+</struts-config>
